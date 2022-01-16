@@ -29,10 +29,17 @@ public class ChessMatch {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSourcePosition(source);
+		validateTargetPosition(source, target);
 		Piece capturePiece = makeMove(source, target);
 		return (ChessPiece)capturePiece;
 	}
 	
+	private void validateTargetPosition(Position source, Position target) {
+			if(!board.piece(source).possibleMove(target)) {
+				throw new ChessException("There chosen piece can´t move to target position.");
+			}
+	}
+
 	private Piece makeMove(Position source, Position target) {
 		Piece p = board.removePiece(source);
 		Piece capturedPiece = board.removePiece(target);

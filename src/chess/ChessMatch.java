@@ -11,6 +11,7 @@ import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
 import chess.pieces.Pawn;
+import chess.pieces.Queen;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -73,7 +74,7 @@ public class ChessMatch {
 		
 		if(testCheck(currentPlayer)) {
 			undoMove(source, target, capturePiece);
-			throw new ChessException("You can´t put yourself in check");
+			throw new ChessException("You canï¿½t put yourself in check");
 		}
 		
 		check = (testCheck(opponent(currentPlayer))) ? true : false;
@@ -88,7 +89,7 @@ public class ChessMatch {
 	
 	private void validateTargetPosition(Position source, Position target) {
 			if(!board.piece(source).possibleMove(target)) {
-				throw new ChessException("There chosen piece can´t move to target position.");
+				throw new ChessException("There chosen piece canï¿½t move to target position.");
 			}
 	}
 
@@ -196,6 +197,7 @@ public class ChessMatch {
 		placeNewPiece('a', 1, new Rook(board, Color.WHITE));
 		placeNewPiece('b', 1, new Knight(board, Color.WHITE));
 		placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
+		placeNewPiece('d', 1, new Queen(board, Color.WHITE));
         placeNewPiece('e', 1, new King(board, Color.WHITE));
 		placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
 		placeNewPiece('g', 1, new Knight(board, Color.WHITE));
@@ -212,6 +214,7 @@ public class ChessMatch {
         placeNewPiece('a', 8, new Rook(board, Color.BLACK));
         placeNewPiece('b', 8, new Knight(board, Color.BLACK));
 		placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
+		placeNewPiece('d', 8, new Queen(board, Color.BLACK));
         placeNewPiece('e', 8, new King(board, Color.BLACK));
         placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
         placeNewPiece('g', 8, new Knight(board, Color.BLACK));
